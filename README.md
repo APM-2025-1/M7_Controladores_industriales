@@ -28,23 +28,26 @@
     <summary>📂 Tabla de Contenido</summary>
 
 <!-- TOC -->
+- [1. 🤔🎚️ Lógica de Control implementada en Studio 5000](#1-️-lógica-de-control-implementada-en-studio-5000)
+  - [1.1. Estructura del Proyecto](#11-estructura-del-proyecto)
+  - [1.2. ⚙️🔄️ Lógica en GRAFCET](#12-️️-lógica-en-grafcet)
+  - [1.3. 🧠🪜 Lógica en Ladder (LD)](#13--lógica-en-ladder-ld)
 
-* [](#)
 
 </details>
 
-## Lógica de Control implementada en Studio 5000
+## 1. 🤔🎚️ Lógica de Control implementada en Studio 5000
 
 El sistema de automatización desarrollado tiene como objetivo controlar una **planta de ensamblaje de patinetas eléctricas**, específicamente el movimiento de **7 bandas transportadoras**, cada una con lógica independiente pero estructuralmente idéntica. El control se implementa en un **Controlador CompactLogix 1769-L30ERM**, usando el software **Studio 5000 Logix Designer**, con programación en **GRAFCET (SFC)** y **Ladder Diagram (LD)**.
 
-### Estructura del Proyecto
+### 1.1. Estructura del Proyecto
 
 En el controlador `PlantaAutomatizacion`, se define una sola tarea (`MainTask`) que contiene el programa `MainProgram`, el cual tiene dos rutinas:
 
 * `GrafcetBandas`: Contiene la lógica secuencial del movimiento de las bandas mediante diagramas de GRAFCET.
 * `MainRoutine`: Lógica complementaria en lenguaje Ladder (LD), que interactúa con señales externas (como Google Assistant) y el variador de frecuencia PowerFlex 525.
 
-### Lógica en GRAFCET
+### 1.2. ⚙️🔄️ Lógica en GRAFCET
 
 Cada banda cuenta con una estructura típica compuesta por:
 
@@ -61,7 +64,7 @@ Ejemplo de lógica para una banda (Banda 1):
 * **Start**: Si `StartBanda1` está activa y `StopBanda1` no lo está, se transiciona desde `Step_000` a `Step_001`, activando `Banda1`.
 * **Stop**: Al cumplirse la condición de `StopBanda1`, se transiciona a `Step_002`, apagando la banda.
 
-### Lógica en Ladder (LD)
+### 1.3. 🧠🪜 Lógica en Ladder (LD)
 
 La rutina `MainRoutine` contiene 6 rungs, entre ellos:
 
